@@ -9,72 +9,8 @@ from Admin import *
 con = sqlite3.connect('assignment3.db')
 cur = con.cursor()
 
-def get_student_data():
 
-    # Select all rows from the 'user' table
-    select_query = 'SELECT * FROM STUDENT'
-    cur.execute(select_query)
-    rows = cur.fetchall()
-    # Create a list to store user objects
-    student_database = []
-    print('Importing Student database...')
-    # Iterate through the rows and create User objects
-    for row in rows:
-        id = row[0]
-        first_name = row[1]
-        last_name = row[2]
-        email = row[3]
-        grad_year = row[4]
-        major = row[5]
-        student = Student(id, first_name, last_name, email, grad_year, major, 0)
-        student_database.append(student)
-    print('Student Database import successful!')
-
-
-def get_teacher_data():
-
-    # Select all rows from the 'user' table
-    select_query = 'SELECT * FROM INSTRUCTOR'
-    cur.execute(select_query)
-    rows = cur.fetchall()
-    # Create a list to store user objects
-    teacher_database = []
-    print('Importing Teacher database...')
-    # Iterate through the rows and create User objects
-    for row in rows:
-        id = row[0]
-        first_name = row[1]
-        last_name = row[2]
-        title = row[3]
-        hire_year = row[4]
-        dept = row[5]
-        email = row[6]
-        teacher = Teacher(id, first_name, last_name, title, hire_year, dept, email)
-        teacher_database.append(teacher)
-    print('Teacher Database import successful!')
-
-
-def get_admin_data():
-
-    # Select all rows from the 'user' table
-    select_query = 'SELECT * FROM ADMIN'
-    cur.execute(select_query)
-    rows = cur.fetchall()
-    # Create a list to store user objects
-    admin_database = []
-    print('Importing Admin database...')
-    # Iterate through the rows and create User objects
-    for row in rows:
-        id = row[0]
-        first_name = row[1]
-        last_name = row[2]
-        title = row[3]
-        office= row[4]
-        email = row[5]
-        admin = Admin(id, first_name, last_name, title, office, email)
-        admin_database.append(admin)
-    print('Admin Database import successful!')
-
+# test
 
 def create_course_table():
     cur.execute("""
@@ -563,9 +499,6 @@ def edit_course_attributes():
 # Main
 
 while True:
-    get_student_data()
-    get_teacher_data()
-    get_admin_data()
     print("============================\n"
           "   Assignment 3 Database\n"
           "============================")
