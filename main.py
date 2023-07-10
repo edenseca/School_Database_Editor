@@ -1,8 +1,16 @@
 import sqlite3
 
+from User import *
+from Student import *
+from Teacher import *
+from Admin import *
+
+
 con = sqlite3.connect('assignment3.db')
 cur = con.cursor()
 
+
+def
 
 def create_course_table():
     cur.execute("""
