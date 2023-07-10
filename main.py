@@ -10,7 +10,7 @@ con = sqlite3.connect('assignment3.db')
 cur = con.cursor()
 
 
-def
+# test
 
 def create_course_table():
     cur.execute("""
