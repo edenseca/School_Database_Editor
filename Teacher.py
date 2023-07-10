@@ -10,12 +10,12 @@ class Teacher(User):
 
     def show_schedule(self):
         print('Showing Teachers Schedule')
-        self.id_num = self.id_num
+        self.id = self.id
 
     def print_class_list(self):
         print('Printing Class list')
-        self.id_num = self.id_num
+        self.id = self.id
 
     def search_crn(self):
         print('Search for CRN')
-        self.id_num = self.id_num
+        self.id = self.id

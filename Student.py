@@ -2,10 +2,11 @@ from User import *
 
 
 class Student(User):
-    def __init__(self, id, first_name, last_name, email, grad_year, major):
+    def __init__(self, id, first_name, last_name, email, grad_year, major, crn):
         super().__init__(id, first_name, last_name, email)
         self.grad_year = grad_year
         self.major = major
+        self.crn = []
 
     # Functions for add / remove crn
     def add(self, in_crn):

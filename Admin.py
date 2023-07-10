@@ -9,16 +9,16 @@ class Admin(User):
 
     def add_course(self):
         print('Enter CRN to add to system: ')
-        self.id_num = self.id_num
+        self.id = self.id
 
     def remove_course(self):
         print('Enter CRN to remove from system: ')
-        self.id_num = self.id_num
+        self.id = self.id
 
     def add_remove_student(self):
         print('Enter Students Name: ')
-        self.id_num = self.id_num
+        self.id = self.id
 
     def search_roaster(self):
         print('Enter CRN to see Roaster: ')
-        self.id_num = self.id_num
+        self.id = self.id

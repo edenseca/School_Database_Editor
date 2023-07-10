@@ -9,11 +9,11 @@ class User:
     def show_first_name(self):
         return self.first_name
 
-    def show_sur_name(self):
+    def show_last_name(self):
         return self.last_name
 
-    def show_id_num(self):
-        return self.id_num
+    def show_id(self):
+        return self.id
 
     def show_details(self):
         print(f'{self.first_name}')
