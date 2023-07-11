@@ -557,33 +557,38 @@ def edit_course_attributes():
             print("Invalid Input!")
 
 
+
+get_student_data()
+get_teacher_data()
+get_admin_data()
+j = 0
+
+# Login system
+while True:
+    id_in = int(input('Please enter your ID number: '))
+    name_in = input('Please enter your first name: ')
+    for student in student_database:
+        if id_in == student.id and name_in == student.first_name :
+            print('Successful login')
+            j = 1
+    for teacher in teacher_database:
+        if id_in == teacher.id and name_in == teacher.first_name:
+            print('Successful login')
+            j = 2
+    for admin in admin_database:
+        if id_in == admin.id and name_in == admin.first_name:
+            print('Successful login')
+            j = 3
+    if j == 0:
+        print('error')
+    else:
+        break
+
+
 # Main
 
+
 while True:
-    get_student_data()
-    get_teacher_data()
-    get_admin_data()
-    j = 0
-    # Login system
-    while True:
-        id_in = int(input('Please enter your ID number: '))
-        name_in = input('Please enter your first name: ')
-        for student in student_database:
-            if id_in == student.id and name_in == student.first_name :
-                print('Successful login')
-                j = 1
-        for teacher in teacher_database:
-            if id_in == teacher.id and name_in == teacher.first_name:
-                print('Successful login')
-                j = 2
-        for admin in admin_database:
-            if id_in == admin.id and name_in == admin.first_name:
-                print('Successful login')
-                j = 3
-        if j == 0:
-            print('error')
-        else:
-            break
     print("============================\n"
           "   Assignment 3 Database\n"
           "============================")
@@ -618,7 +623,7 @@ while True:
             else:
                 print("Invalid Input!")
 
-    elif option == 2:
+    elif option == 2 and j == 3:
         while True:
             print("Would you like to Insert or Remove?\n"
                   "1) Insert\n"
