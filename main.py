@@ -5,18 +5,19 @@ from Student import *
 from Teacher import *
 from Admin import *
 
-#pushing
+
 con = sqlite3.connect('assignment3.db')
 cur = con.cursor()
 
+admin_database = []
+teacher_database = []
+student_database = []
 def get_student_data():
 
     # Select all rows from the 'user' table
     select_query = 'SELECT * FROM STUDENT'
     cur.execute(select_query)
     rows = cur.fetchall()
-    # Create a list to store user objects
-    student_database = []
     print('Importing Student database...')
     # Iterate through the rows and create User objects
     for row in rows:
@@ -37,8 +38,6 @@ def get_teacher_data():
     select_query = 'SELECT * FROM INSTRUCTOR'
     cur.execute(select_query)
     rows = cur.fetchall()
-    # Create a list to store user objects
-    teacher_database = []
     print('Importing Teacher database...')
     # Iterate through the rows and create User objects
     for row in rows:
@@ -60,8 +59,6 @@ def get_admin_data():
     select_query = 'SELECT * FROM ADMIN'
     cur.execute(select_query)
     rows = cur.fetchall()
-    # Create a list to store user objects
-    admin_database = []
     print('Importing Admin database...')
     # Iterate through the rows and create User objects
     for row in rows:
@@ -566,6 +563,27 @@ while True:
     get_student_data()
     get_teacher_data()
     get_admin_data()
+    j = 0
+    # Login system
+    while True:
+        id_in = int(input('Please enter your ID number: '))
+        name_in = input('Please enter your first name: ')
+        for student in student_database:
+            if id_in == student.id and name_in == student.first_name :
+                print('Successful login')
+                j = 1
+        for teacher in teacher_database:
+            if id_in == teacher.id and name_in == teacher.first_name:
+                print('Successful login')
+                j = 2
+        for admin in admin_database:
+            if id_in == admin.id and name_in == admin.first_name:
+                print('Successful login')
+                j = 3
+        if j == 0:
+            print('error')
+        else:
+            break
     print("============================\n"
           "   Assignment 3 Database\n"
           "============================")

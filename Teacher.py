@@ -12,9 +12,16 @@ class Teacher(User):
         print('Showing Teachers Schedule')
         self.id = self.id
 
+
     def print_class_list(self):
-        print('Printing Class list')
         self.id = self.id
+        con = sqlite3.connect('assignment3.db')
+        cur = con.cursor()
+        cur.execute("SELECT * FROM student")
+        t = cur.fetchall()
+        print("STUDENTS:")
+        for row in t:
+            print(row)
 
     def search_crn(self):
         print('Search for CRN')
