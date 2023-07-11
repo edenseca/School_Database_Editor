@@ -85,7 +85,7 @@ def create_course_table():
     con.commit()
 
 
-def display_student():
+def display_student():      # Teachers
     cur.execute("SELECT * FROM student")
     t = cur.fetchall()
 
@@ -94,7 +94,7 @@ def display_student():
         print(row)
 
 
-def display_teachers():
+def display_teachers():     # Teacher/Admin
     cur.execute("SELECT * FROM instructor")
     x = cur.fetchall()
 
@@ -103,7 +103,7 @@ def display_teachers():
         print(row)
 
 
-def display_admin():
+def display_admin():        # Admin
     cur.execute("SELECT * FROM admin")
     y = cur.fetchall()
 
@@ -112,7 +112,7 @@ def display_admin():
         print(row)
 
 
-def display_courses():
+def display_courses():      # Everyone
     cur.execute("SELECT * FROM course")
     z = cur.fetchall()
 
@@ -121,14 +121,14 @@ def display_courses():
         print(row)
 
 
-def display_all_table():
+def display_all_table():    # Not needed
     display_student()
     display_teachers()
     display_admin()
     display_courses()
 
 
-def student_insert():
+def student_insert():       # Admin
     wid = int(input("Enter students WID: "))
     first_name = input("Enter students first name: ")
     last_name = input("Enter students last name: ")
@@ -139,7 +139,7 @@ def student_insert():
     con.commit()
 
 
-def teacher_insert():
+def teacher_insert():       # Admin
     wid = int(input("Enter teachers WID: "))
     first_name = input("Enter teachers first name: ")
     last_name = input("Enter teachers last name: ")
@@ -151,7 +151,7 @@ def teacher_insert():
     con.commit()
 
 
-def admin_insert():
+def admin_insert():         # Admin
     wid = int(input("Enter admin WID: "))
     first_name = input("Enter admin first name: ")
     last_name = input("Enter admin last name: ")
@@ -162,7 +162,7 @@ def admin_insert():
     con.commit()
 
 
-def course_insert():
+def course_insert():        # Admin
     CRN = int(input("Enter the 5 digit CRN related to the course: "))
     title = input("Enter the title of the class: ")
     department = input("Enter the department of the class: ")
@@ -175,7 +175,7 @@ def course_insert():
     con.commit()
 
 
-def student_search():
+def student_search():       # Admin/Teacher
     while True:
         print("What attribute will you filter for?\n"
               "1) First Name\n"
@@ -223,7 +223,7 @@ def student_search():
             print("Invalid Input!")
 
 
-def teacher_search():
+def teacher_search():       # Admin/Teacher
     while True:
         print("What attribute will you filter for?\n"
               "1) First Name\n"
@@ -280,7 +280,7 @@ def teacher_search():
             print("Invalid Input!")
 
 
-def admin_search():
+def admin_search():         # Admin
     while True:
         print("What attribute will you filter for?\n"
               "1) First Name\n"
@@ -327,7 +327,7 @@ def admin_search():
             break
 
 
-def course_search():
+def course_search():        # Everyone
     while True:
         print("What attribute will you filter for?\n"
               "1) CRNs\n"
@@ -365,7 +365,7 @@ def course_search():
             print("Invalid Input!")
 
 
-def edit_student_attributes():
+def edit_student_attributes():      # Admin
     while True:
         print("What attribute would you like to change?\n"
               "1) WID\n"
@@ -409,7 +409,7 @@ def edit_student_attributes():
             print("Invalid Input!")
 
 
-def edit_teacher_attributes():
+def edit_teacher_attributes():          # Admin
     while True:
         print("What attribute would you like to change?\n"
               "1) WID\n"
@@ -456,7 +456,7 @@ def edit_teacher_attributes():
             print("Invalid Input!")
 
 
-def edit_admin_attributes():
+def edit_admin_attributes():        # Admin
     while True:
         print("What attribute would you like to change?\n"
               "1) WID\n"
@@ -498,7 +498,7 @@ def edit_admin_attributes():
             print("Invalid Input!")
 
 
-def edit_course_attributes():
+def edit_course_attributes():           # Admin
     while True:
         print("What attribute would you like to change?\n"
               "1) CRN\n"
