@@ -135,7 +135,7 @@ while True:
         if choice2 == 1:
             student.search_courses()
         elif choice2 == 2:
-            student.add_course()
+            student.add()
         elif choice2 == 3:
             student.drop_course()
         elif choice2 == 4:
