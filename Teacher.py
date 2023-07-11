@@ -1,9 +1,9 @@
 from User import *
 import sqlite3
+con = sqlite3.connect('assignment3.db')
+cur = con.cursor()
 
 class Teacher(User):
-    con = sqlite3.connect('assignment3.db')
-    cur = con.cursor()
     def __init__(self, id, first_name, last_name, email, title, hire_year, department):
         super().__init__(id, first_name, last_name, email)
         self.title = title
@@ -13,11 +13,11 @@ class Teacher(User):
     def search_courses(self):  # Everyone
         while True:
             print("What attribute will you filter for?\n"
-                    "1) CRNs\n"
-                    "2) Title\n"
-                    "3) Department\n"
-                    "4) Semester\n"
-                    "5) Exit")
+                  "1) CRNs\n"
+                  "2) Title\n"
+                  "3) Department\n"
+                  "4) Semester\n"
+                  "5) Exit")
             course_op = int(input(''))
             if course_op == 1:
                 search_crn = int(input("Enter CRN: "))
