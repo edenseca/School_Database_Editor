@@ -155,11 +155,11 @@ while True:
         choice2 = int(input())
 
         if choice2 == 1:
-            instructor.print_schedule()
+            teacher.print_schedule()
         elif choice2 == 2:
-            instructor.print_class_list()
+            teacher.print_class_list()
         elif choice2 == 3:
-            instructor.search_courses()
+            teacher.search_courses()
         elif choice2 == 4:
             break
         else:
