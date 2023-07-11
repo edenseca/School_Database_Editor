@@ -10,14 +10,14 @@ class Teacher(User):
         self.hire_year = hire_year
         self.department = department
 
-    def course_search():  # Everyone
+    def search_courses(self):  # Everyone
         while True:
             print("What attribute will you filter for?\n"
-                  "1) CRNs\n"
-                  "2) Title\n"
-                  "3) Department\n"
-                  "4) Semester\n"
-                  "5) Exit")
+                    "1) CRNs\n"
+                    "2) Title\n"
+                    "3) Department\n"
+                    "4) Semester\n"
+                    "5) Exit")
             course_op = int(input(''))
             if course_op == 1:
                 search_crn = int(input("Enter CRN: "))
@@ -48,28 +48,25 @@ class Teacher(User):
                 print("Invalid Input!")
 
 
-    def print_class_list(self):
-        def display_student():  # Teachers
-            cur.execute("SELECT * FROM student")
-            t = cur.fetchall()
+    def print_class_list(self):  # Teachers
+        cur.execute("SELECT * FROM student")
+        t = cur.fetchall()
 
-            print("STUDENTS:")
-            for row in t:
-                print(row)
-
-    def search_crn(self):
-        def display_courses(self):  # Everyone
-            cur.execute("SELECT * FROM course")
-            z = cur.fetchall()
-
-            print("COURSES:")
-            for row in z:
-                print(row)
+        print("STUDENTS:")
+        for row in t:
+            print(row)
 
 
+    def print_schedule(self):  # Everyone
+        cur.execute("SELECT * FROM course")
+        z = cur.fetchall()
+
+        print("COURSES:")
+        for row in z:
+            print(row)
 
 
-    def student_search():  # Admin/Teacher
+    def student_search(self):  # Admin/Teacher
         while True:
             print("What attribute will you filter for?\n"
                   "1) First Name\n"
