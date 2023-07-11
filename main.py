@@ -133,13 +133,13 @@ while True:
         print("5) Exit")
         choice2 = int(input())
         if choice2 == 1:
-            student.search_courses()
+            student.course_search()
         elif choice2 == 2:
             student.add()
         elif choice2 == 3:
-            student.drop_course()
+            student.remove()
         elif choice2 == 4:
-            student.print_schedule()
+            student.display_courses()
         elif choice2 == 5:
             break
         else:
