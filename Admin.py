@@ -9,28 +9,26 @@ class Admin(User):
         self.title = title
         self.office = office
 
-    def add_course(self):
-        def course_insert():
-            CRN = int(input("Enter the 5 digit CRN related to the course: "))
-            title = input("Enter the title of the class: ")
-            department = input("Enter the department of the class: ")
-            time = input("Enter the time frame of the class (i.e. 8-920): ")
-            Days_of_week = input(
-                "Enter the days the classes take place on (M-monday, T-tuesday, W-Wednesday, TR-Thursday, F-Friday): ")
-            semester = input("Enter the semester the class is during: ")
-            year = int(input("Enter the year the class takes place in: "))
-            credit = int(input("Enter the amount of credits the course is: "))
-            cur.execute(
-                "INSERT INTO course VALUES ('{}','{}','{}','{}','{}','{}','{}','{}')".format(CRN, title, department,
-                                                                                             time, Days_of_week,
-                                                                                             semester, year, credit))
-            con.commit()
+    def course_insert(self):
+        CRN = int(input("Enter the 5 digit CRN related to the course: "))
+        title = input("Enter the title of the class: ")
+        department = input("Enter the department of the class: ")
+        time = input("Enter the time frame of the class (i.e. 8-920): ")
+        Days_of_week = input(
+            "Enter the days the classes take place on (M-monday, T-tuesday, W-Wednesday, TR-Thursday, F-Friday): ")
+        semester = input("Enter the semester the class is during: ")
+        year = int(input("Enter the year the class takes place in: "))
+        credit = int(input("Enter the amount of credits the course is: "))
+        cur.execute(
+            "INSERT INTO course VALUES ('{}','{}','{}','{}','{}','{}','{}','{}')".format(CRN, title, department,
+                                                                                         time, Days_of_week,
+                                                                                         semester, year, credit))
+        con.commit()
 
     def remove_course(self):
         print('Enter CRN to remove from system: ')
         self.id = self.id
 
-    def add_remove_student(self):
         def student_insert():  # Admin
             wid = int(input("Enter students WID: "))
             first_name = input("Enter students first name: ")
@@ -42,7 +40,6 @@ class Admin(User):
                                                                                             grad_year, major, email))
             con.commit()
 
-    def search_roaster(self):
         def student_search():  # Admin/Teacher
             while True:
                 print("What attribute will you filter for?\n"
@@ -402,8 +399,6 @@ class Admin(User):
                 break
             else:
                 print("Invalid Input!")
-
-
 
 
     # def display_teachers(self):  # Teacher/Admin
