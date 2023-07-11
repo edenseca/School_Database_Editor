@@ -184,7 +184,7 @@ def student_search():
               "4) Major\n"
               "5) Graduation Year\n"
               "6) Email\n"
-              "7) BACK")
+              "7) Exit")
         filter_op = int(input(''))
         if filter_op == 1:
             search_name = input("Enter the first name: ")
@@ -233,7 +233,7 @@ def teacher_search():
               "5) Year Hired\n"
               "6) Email\n"
               "7) Department\n"
-              "8) BACK")
+              "8) Exit")
         filter_op = int(input(''))
         if filter_op == 1:
             search_name = input("Enter the first name: ")
@@ -289,7 +289,7 @@ def admin_search():
               "4) Office\n"
               "5) Email\n"
               "6) Title\n"
-              "7) BACK")
+              "7) Exit")
         filter_op = int(input(''))
         if filter_op == 1:
             search_name = input("Enter the first name: ")
@@ -334,7 +334,7 @@ def course_search():
               "2) Title\n"
               "3) Department\n"
               "4) Semester\n"
-              "5) BACK")
+              "5) Exit")
         course_op = int(input(''))
         if course_op == 1:
             search_crn = int(input("Enter CRN: "))
@@ -373,7 +373,7 @@ def edit_student_attributes():
               "3) Last Name\n"
               "4) Graduation Year\n"
               "5) Major\n"
-              "6) BACK")
+              "6) Exit")
         student_edit_op = int(input(''))
         if student_edit_op == 1:
             old_wid = int(input("What WID will you change? "))
@@ -418,7 +418,7 @@ def edit_teacher_attributes():
               "4) Year Hired\n"
               "5) Title\n"
               "6) Department\n"
-              "7) BACK")
+              "7) Exit")
         student_edit_op = int(input(''))
         if student_edit_op == 1:
             old_wid = int(input("What WID will you change? "))
@@ -464,7 +464,7 @@ def edit_admin_attributes():
               "3) Last Name\n"
               "4) Title\n"
               "5) Office\n"
-              "6) BACK")
+              "6) Exit")
         student_edit_op = int(input(''))
         if student_edit_op == 1:
             old_wid = int(input("What WID will you change? "))
@@ -509,7 +509,7 @@ def edit_course_attributes():
               "6) Semester\n"
               "7) Year\n"
               "8) Credits\n"
-              "9) BACK")
+              "9) Exit")
         student_edit_op = int(input(''))
         if student_edit_op == 1:
             old_crn = int(input("What CRN will you change? "))
@@ -584,59 +584,69 @@ while True:
     else:
         break
 
-
 # Main
 
 
 while True:
-    print("============================\n"
-          "   Assignment 3 Database\n"
-          "============================")
-    print("What would you like to do?\n"
-          "1) Search Database\n"
-          "2) Insert/Remove into database\n"
-          "3) Display Database\n"
-          "4) Create Table(courses)\n"
-          "5) Edit specifics database\n"
-          "6) EXIT\n")
-    option = int(input(''))
+    if j == 1:  # Student
+        print("Student Actions:")
+        print("Choose one (1-4)")
+        print("1) Search Course")
+        print("2) Add Course")
+        print("3) Drop Course")
+        print("4) Print Schedule")
+        print("5) Exit")
+        choice2 = int(input())
+        if choice2 == 1:
+            student.search_courses()
+        elif choice2 == 2:
+            student.add_course()
+        elif choice2 == 3:
+            student.drop_course()
+        elif choice2 == 4:
+            student.print_schedule()
+        elif choice2 == 5:
+            break
+        else:
+            print("Invalid choice.")
 
-    if option == 1:
-        while True:
-            print("What database would you like to search?\n"
-                  "1) Student\n"
-                  "2) Teacher\n"
-                  "3) Admin\n"
-                  "4) Courses\n"
-                  "5) BACK")
-            search_op = int(input(''))
-            if search_op == 1:
-                student_search()
-            elif search_op == 2:
-                teacher_search()
-            elif search_op == 3:
-                admin_search()
-            elif search_op == 4:
-                course_search()
-            elif search_op == 5:
-                break
-            else:
-                print("Invalid Input!")
+    elif j == 2:  # Instructor
+        print("Instructor Actions:")
+        print("Choose one (1-3)")
+        print("1) Print Schedule")
+        print("2) Print Class List")
+        print("3) Search Courses")
+        print("4) Exit")
+        choice2 = int(input())
 
-    elif option == 2 and j == 3:
-        while True:
-            print("Would you like to Insert or Remove?\n"
-                  "1) Insert\n"
-                  "2) Remove\n"
-                  "3) Back\n")
-            choice = int(input(''))
-            if choice == 1:
+        if choice2 == 1:
+            instructor.print_schedule()
+        elif choice2 == 2:
+            instructor.print_class_list()
+        elif choice2 == 3:
+            instructor.search_courses()
+        elif choice2 == 4:
+            break
+        else:
+            print("Invalid choice.")
+
+    elif j == 3:  # Admin
+        print("Admin Actions:")
+        print("Choose one (1-5)")
+        print("1) Add to Database")
+        print("2) Remove from Database")
+        print("3) Search and Print Rosters and Courses")
+        print("4) Exit")
+        choice2 = int(input())
+
+        if choice2 == 1:
+            while True:
                 print("Which database would you like to add to?\n"
                       "1) Student\n"
                       "2) Instructor\n"
                       "3) Admin\n"
                       "4) Courses\n"
-                      "5) BACK\n")
+                      "5) Exit\n")
                 insert_op = int(input(''))
                 if insert_op == 1:
                     student_insert()
@@ -650,13 +660,14 @@ while True:
                     break
                 else:
                     print("Invalid Input!")
-            elif choice == 2:
+        elif choice2 == 2:
+            while True:
                 print("Which database would you like to remove from?\n"
                       "1) Student\n"
                       "2) Instructor\n"
                       "3) Admin\n"
                       "4) Courses\n"
-                      "5) BACK\n")
+                      "5) Exit\n")
                 remove_op = int(input(''))
                 if remove_op == 1:
                     student_name = input("Enter the name of the student you would like to remove: ")
@@ -682,73 +693,9 @@ while True:
                     break
                 else:
                     print("Invalid Input!")
-            elif choice == 3:
-                break
-            else:
-                print("Invalid input!")
-
-    elif option == 3:
-        while True:
-            print("What database would you like to see?\n"
-                  "1) Student Database\n"
-                  "2) Instructor Database\n"
-                  "3) Admin Database\n"
-                  "4) Course Database\n"
-                  "5) Display All Databases\n"
-                  "6) BACK\n")
-            print_op = int(input(''))
-
-            if print_op == 1:
-                display_student()
-            elif print_op == 2:
-                display_teachers()
-            elif print_op == 3:
-                display_admin()
-            elif print_op == 4:
-                display_courses()
-            elif print_op == 5:
-                display_all_table()
-            elif print_op == 6:
-                break
-            else:
-                print("Invalid option!")
-
-    elif option == 4:
-        print("Would you like to create the course database?\n"
-              "1) Yes\n"
-              "2) No\n")
-        create_table_op = int(input(''))
-        if create_table_op == 1:
-            create_course_table()
-        elif create_table_op == 2:
+        elif choice2 == 3:
+           print('working')
+        elif choice2 == 4:
             break
         else:
-            print("Invalid Input!")
-
-    elif option == 5:
-        while True:
-            print("Which database would you like to edit?\n"
-                  "1) Student\n"
-                  "2) Teacher\n"
-                  "3) Admin\n"
-                  "4) Course\n"
-                  "5) BACK\n")
-            edit_op = int(input(''))
-            if edit_op == 1:
-                edit_student_attributes()
-            elif edit_op == 2:
-                edit_teacher_attributes()
-            elif edit_op == 3:
-                edit_admin_attributes()
-            elif edit_op == 4:
-                edit_course_attributes()
-            elif edit_op == 5:
-                break
-            else:
-                print("Invalid Input!")
-
-    elif option == 6:
-        print("GOODBYE!")
-        exit()
-    else:
-        print("Invalid Input!")
+            print("Invalid choice.")
