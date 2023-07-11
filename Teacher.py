@@ -3,11 +3,6 @@ import sqlite3
 con = sqlite3.connect('assignment3.db')
 cur = con.cursor()
 class Teacher(User):
-
-con = sqlite3.connect('assignment3.db')
-cur = con.cursor()
-
-class Teacher(User):
     def __init__(self, id, first_name, last_name, email, title, hire_year, department):
         super().__init__(id, first_name, last_name, email)
         self.title = title
