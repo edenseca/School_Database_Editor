@@ -18,7 +18,8 @@ class Student(User):
         self.crn.append(in_crn)
         print('CRN: ', in_crn, ' Added!')
 
-    def remove(self, in_crn):
+    def remove(self):
+        in_crn = int(input('Enter CRN: '))
         i = 0
         j = 0
         while i < len(self.crn):
