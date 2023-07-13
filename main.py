@@ -12,6 +12,8 @@ cur = con.cursor()
 admin_database = []
 teacher_database = []
 student_database = []
+
+
 def get_student_data():
 
     # Select all rows from the 'user' table
@@ -85,12 +87,11 @@ def create_course_table():
     con.commit()
 
 
-def display_all_table():    # Not needed
-    display_student()
-    display_teachers()
-    display_admin()
-    display_courses()
-
+# def display_all_table():    # Not needed
+#     display_student()
+#     display_teachers()
+#     display_admin()
+#     display_courses()
 
 
 get_student_data()
@@ -167,7 +168,7 @@ while True:
 
     elif j == 3:  # Admin
         print("Admin Actions:")
-        print("Choose one (1-5)")
+        print("Choose one (1-4)")
         print("1) Add to Database")
         print("2) Remove from Database")
         print("3) Search and Print Rosters and Courses")
@@ -184,19 +185,77 @@ while True:
                       "5) Exit\n")
                 insert_op = int(input(''))
                 if insert_op == 1:
-                    student_insert()
+                    admin.student_insert()
                 elif insert_op == 2:
-                    teacher_insert()
+                    admin.teacher_insert()
                 elif insert_op == 3:
-                    admin_insert()
+                    admin.admin_insert()
                 elif insert_op == 4:
-                    course_insert()
+                    admin.course_insert()
+                elif insert_op == 5:
+                    break
+                else:
+                    print("Invalid Input!")
+        elif choice2 == 2:      # CHANGE TO REMOVE FROM DATABASES
+            while True:
+                print("Which database would you like to remove from?\n"
+                      "1) Student\n"
+                      "2) Instructor\n"
+                      "3) Admin\n"
+                      "4) Courses\n"
+                      "5) Exit\n")
+                insert_op = int(input(''))
+                if insert_op == 1:
+                    admin.student_remove()
+                elif insert_op == 2:
+                    admin.teacher_remove()
+                elif insert_op == 3:
+                    admin.admin_remove()
+                elif insert_op == 4:
+                    admin.remove_courses()
                 elif insert_op == 5:
                     break
                 else:
                     print("Invalid Input!")
         elif choice2 == 3:
-           print('working')
+            while True:
+                print("Would you like to search or print students/courses?\n"
+                      "1) Print\n"
+                      "2) Search\n"
+                      "3) Exit\n")
+                search_print_op = int(input(""))
+                if search_print_op == 1:
+                    print("Would you like to print students or courses?\n"
+                          "1) Students\n"
+                          "2) Courses\n"
+                          "3) Exit\n")
+                    print_op = int(input(""))
+                    if print_op == 1:
+                        admin.print_class_list()
+                    elif print_op == 2:
+                        admin.display_courses()
+                    elif print_op == 3:
+                        break
+                    else:
+                        print("Invalid Input!")
+                elif search_print_op == 2:
+                    print("Would you like to search students or courses?\n"
+                          "1) Students\n"
+                          "2) Courses\n"
+                          "3) Exit\n")
+                    search_op = int(input(""))
+                    if search_op == 1:
+                        admin.student_search()
+                    elif search_op == 2:
+                        admin.course_search()
+                    elif search_op == 3:
+                        break
+                    else:
+                        print("Invalid Input!")
+                elif search_print_op == 3:
+                    break
+                else:
+                    print("Invalid Input!")
         elif choice2 == 4:
             break
         else:

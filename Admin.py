@@ -2,6 +2,8 @@ from User import *
 import sqlite3
 con = sqlite3.connect('assignment3.db')
 cur = con.cursor()
+
+
 class Admin(User):
 
     def __init__(self, id, first_name, last_name, email, title, office):
@@ -29,20 +31,25 @@ class Admin(User):
         print('Enter CRN to remove from system: ')
         self.id = self.id
 
-        def student_insert():  # Admin
-            wid = int(input("Enter students WID: "))
-            first_name = input("Enter students first name: ")
-            last_name = input("Enter students last name: ")
-            grad_year = int(input("Enter students expected graduation year: "))
-            major = input("Enter students major: ")
-            email = input("Enter student email without @domain: ")
-            cur.execute("INSERT INTO student VALUES ('{}','{}','{}','{}','{}','{}')".format(wid, first_name, last_name,
-                                                                                            grad_year, major, email))
-            con.commit()
+    def student_insert(self):  # Admin
+        wid = int(input("Enter students WID: "))
+        first_name = input("Enter students first name: ")
+        last_name = input("Enter students last name: ")
+        grad_year = int(input("Enter students expected graduation year: "))
+        major = input("Enter students major: ")
+        email = input("Enter student email without @domain: ")
+        cur.execute("INSERT INTO student VALUES ('{}','{}','{}','{}','{}','{}')".format(wid, first_name, last_name, grad_year, major, email))
+        con.commit()
 
-        def student_search():  # Admin/Teacher
-            while True:
-                print("What attribute will you filter for?\n"
+    def student_remove(self):
+        remove_name = input("Enter the name of the student you would like to remove: ")
+        cur.execute("DELETE FROM student WHERE name = '{}'".format(remove_name))
+        con.commit()
+
+
+    def student_search(self):  # Admin/Teacher
+        while True:
+            print("What attribute will you filter for?\n"
                       "1) First Name\n"
                       "2) Last Name\n"
                       "3) WID\n"
@@ -50,42 +57,42 @@ class Admin(User):
                       "5) Graduation Year\n"
                       "6) Email\n"
                       "7) BACK")
-                filter_op = int(input(''))
-                if filter_op == 1:
-                    search_name = input("Enter the first name: ")
-                    cur.execute("SELECT * FROM student WHERE name = '{}'".format(search_name))
-                    for row in cur.fetchall():
-                        print(row)
-                elif filter_op == 2:
-                    search_name = input("Enter the last name: ")
-                    cur.execute("SELECT * FROM student WHERE surname = '{}'".format(search_name))
-                    for row in cur.fetchall():
-                        print(row)
-                elif filter_op == 3:
-                    search_wid = int(input("Enter WITid: "))
-                    cur.execute("SELECT * FROM student WHERE id = '{}'".format(search_wid))
-                    for row in cur.fetchall():
-                        print(row)
-                elif filter_op == 4:
-                    search_major = input("Enter Major: ")
-                    cur.execute("SELECT * FROM student WHERE major = '{}'".format(search_major))
-                    for row in cur.fetchall():
-                        print(row)
-                elif filter_op == 5:
-                    search_grad_year = int(input("Enter expected grad year: "))
-                    cur.execute("SELECT * FROM student WHERE gradyear = '{}'".format(search_grad_year))
-                    for row in cur.fetchall():
-                        print(row)
+            filter_op = int(input(''))
+            if filter_op == 1:
+                search_name = input("Enter the first name: ")
+                cur.execute("SELECT * FROM student WHERE name = '{}'".format(search_name))
+                for row in cur.fetchall():
+                    print(row)
+            elif filter_op == 2:
+                search_name = input("Enter the last name: ")
+                cur.execute("SELECT * FROM student WHERE surname = '{}'".format(search_name))
+                for row in cur.fetchall():
+                    print(row)
+            elif filter_op == 3:
+                search_wid = int(input("Enter WITid: "))
+                cur.execute("SELECT * FROM student WHERE id = '{}'".format(search_wid))
+                for row in cur.fetchall():
+                    print(row)
+            elif filter_op == 4:
+                search_major = input("Enter Major: ")
+                cur.execute("SELECT * FROM student WHERE major = '{}'".format(search_major))
+                for row in cur.fetchall():
+                    print(row)
+            elif filter_op == 5:
+                search_grad_year = int(input("Enter expected grad year: "))
+                cur.execute("SELECT * FROM student WHERE gradyear = '{}'".format(search_grad_year))
+                for row in cur.fetchall():
+                    print(row)
 
-                elif filter_op == 6:
-                    search_email = input("Enter student email to search: ")
-                    cur.execute("SELECT * FROM student WHERE email = '{}'".format(search_email))
-                    for row in cur.fetchall():
-                        print(row)
-                elif filter_op == 7:
-                    break
-                else:
-                    print("Invalid Input!")
+            elif filter_op == 6:
+                search_email = input("Enter student email to search: ")
+                cur.execute("SELECT * FROM student WHERE email = '{}'".format(search_email))
+                for row in cur.fetchall():
+                    print(row)
+            elif filter_op == 7:
+                break
+            else:
+                print("Invalid Input!")
 
     def teacher_insert(self):  # Admin
         wid = int(input("Enter teachers WID: "))
@@ -95,10 +102,12 @@ class Admin(User):
         year_hired = int(input("Enter teachers year of hire: "))
         department = input("Enter teachers department: ")
         email = input("Enter student email without @domain: ")
-        cur.execute(
-            "INSERT INTO instructor VALUES ('{}','{}','{}','{}','{}','{}','{}')".format(wid, first_name, last_name,
-                                                                                        title, year_hired, department,
-                                                                                        email))
+        cur.execute("INSERT INTO instructor VALUES ('{}','{}','{}','{}','{}','{}','{}')".format(wid, first_name, last_name, title, year_hired, department, email))
+        con.commit()
+
+    def teacher_remove(self):
+        teacher_name = input("Enter the name of the teacher you would like to remove: ")
+        cur.execute("DELETE FROM instructor WHERE name = '{}'".format(teacher_name))
         con.commit()
 
     def display_courses(self):  # Everyone
@@ -116,12 +125,15 @@ class Admin(User):
         title = input("Enter title of admin: ")
         office = input("Enter office of admin: ")
         email = input("Enter admin email without @domain: ")
-        cur.execute(
-            "INSERT INTO admin VALUES ('{}','{}','{}','{}','{}','{}')".format(wid, first_name, last_name, title, office,
-                                                                              email))
+        cur.execute("INSERT INTO admin VALUES ('{}','{}','{}','{}','{}','{}')".format(wid, first_name, last_name, title, office, email))
         con.commit()
 
-    def teacher_search():  # Admin/Teacher
+    def admin_remove(self):
+        admin_name = input("Enter the name of the admin you would like to remove: ")
+        cur.execute("DELETE FROM admin WHERE name = '{}'".format(admin_name))
+        con.commit()
+
+    def teacher_search(self):  # Admin/Teacher
         while True:
             print("What attribute will you filter for?\n"
                   "1) First Name\n"
@@ -177,7 +189,7 @@ class Admin(User):
             else:
                 print("Invalid Input!")
 
-    def edit_student_attributes():  # Admin
+    def edit_student_attributes(self):  # Admin
         while True:
             print("What attribute would you like to change?\n"
                   "1) WID\n"
@@ -220,7 +232,7 @@ class Admin(User):
             else:
                 print("Invalid Input!")
 
-    def edit_teacher_attributes():  # Admin
+    def edit_teacher_attributes(self):  # Admin
         while True:
             print("What attribute would you like to change?\n"
                   "1) WID\n"
@@ -266,7 +278,7 @@ class Admin(User):
             else:
                 print("Invalid Input!")
 
-    def edit_admin_attributes():  # Admin
+    def edit_admin_attributes(self):  # Admin
         while True:
             print("What attribute would you like to change?\n"
                   "1) WID\n"
@@ -307,7 +319,7 @@ class Admin(User):
             else:
                 print("Invalid Input!")
 
-    def edit_course_attributes():  # Admin
+    def edit_course_attributes(self):  # Admin
         while True:
             print("What attribute would you like to change?\n"
                   "1) CRN\n"
@@ -401,6 +413,8 @@ class Admin(User):
                 print("Invalid Input!")
 
 
+
+
     # def display_teachers(self):  # Teacher/Admin
     #     cur.execute("SELECT * FROM instructor")
     #     x = cur.fetchall()
@@ -463,7 +477,7 @@ class Admin(User):
     #         else:
     #             break
 
-    def course_search():  # Everyone
+    def course_search(self):  # Everyone
         while True:
             print("What attribute will you filter for?\n"
                   "1) CRNs\n"
@@ -499,3 +513,11 @@ class Admin(User):
                 break
             else:
                 print("Invalid Input!")
+
+    def print_class_list(self):  # Teachers
+        cur.execute("SELECT * FROM student")
+        t = cur.fetchall()
+
+        print("STUDENTS:")
+        for row in t:
+            print(row)

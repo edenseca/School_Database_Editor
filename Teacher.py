@@ -2,7 +2,10 @@ from User import *
 import sqlite3
 con = sqlite3.connect('assignment3.db')
 cur = con.cursor()
+
+
 class Teacher(User):
+
     def __init__(self, id, first_name, last_name, email, title, hire_year, department):
         super().__init__(id, first_name, last_name, email)
         self.title = title
@@ -46,7 +49,6 @@ class Teacher(User):
             else:
                 print("Invalid Input!")
 
-
     def print_class_list(self):  # Teachers
         cur.execute("SELECT * FROM student")
         t = cur.fetchall()
@@ -54,7 +56,6 @@ class Teacher(User):
         print("STUDENTS:")
         for row in t:
             print(row)
-
 
     def print_schedule(self):  # Everyone
         cur.execute("SELECT * FROM course")

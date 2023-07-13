@@ -2,6 +2,8 @@ from User import *
 import sqlite3
 con = sqlite3.connect('assignment3.db')
 cur = con.cursor()
+
+
 class Student(User):
 
     def __init__(self, id, first_name, last_name, email, grad_year, major, crn):
