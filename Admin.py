@@ -404,7 +404,7 @@ class Admin(User):
                 con.commit()
             elif remove_op == 4:
                 course_name = input("Enter the name of the course you would like to remove: ")
-                cur.execute("DELETE FROM course WHERE name = '{}'".format(course_name))
+                cur.execute("DELETE FROM course WHERE title = '{}'".format(course_name))
                 print(f"Course {course_name} was removed from the Database!")
                 con.commit()
             elif remove_op == 5:
