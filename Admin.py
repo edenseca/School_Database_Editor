@@ -379,38 +379,11 @@ class Admin(User):
 
 
     def remove_courses(self):
-        while True:
-            print("Which database would you like to remove from?\n"
-                  "1) Student\n"
-                  "2) Instructor\n"
-                  "3) Admin\n"
-                  "4) Courses\n"
-                  "5) Exit\n")
-            remove_op = int(input(''))
-            if remove_op == 1:
-                student_name = input("Enter the name of the student you would like to remove: ")
-                cur.execute("DELETE FROM student WHERE name = '{}'".format(student_name))
-                print(f"Student {student_name} was removed from the Database!")
-                con.commit()
-            elif remove_op == 2:
-                instructor_name = input("Enter the name of the teacher you would like to remove: ")
-                cur.execute("DELETE FROM instructor WHERE name = '{}'".format(instructor_name))
-                print(f"Teacher {instructor_name} was removed from the Database!")
-                con.commit()
-            elif remove_op == 3:
-                admin_name = input("Enter the name of the admin you would like to remove: ")
-                cur.execute("DELETE FROM admin WHERE name = '{}'".format(admin_name))
-                print(f"Admin {admin_name} was removed from the Database!")
-                con.commit()
-            elif remove_op == 4:
-                course_name = input("Enter the name of the course you would like to remove: ")
-                cur.execute("DELETE FROM course WHERE title = '{}'".format(course_name))
-                print(f"Course {course_name} was removed from the Database!")
-                con.commit()
-            elif remove_op == 5:
-                break
-            else:
-                print("Invalid Input!")
+        course_name = input("Enter the name of the course you would like to remove: ")
+        cur.execute("DELETE FROM course WHERE title = '{}'".format(course_name))
+        print(f"Course {course_name} was removed from the Database!")
+        con.commit()
+
 
 
 
