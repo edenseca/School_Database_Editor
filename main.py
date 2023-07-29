@@ -128,21 +128,20 @@ for u in range (3):
         if j == 1:  # Student
             print("Student Actions:")
             print("Choose one (1-4)")
-            print("1) Search Course")
+            print("1) Print Schedule")
             print("2) Add Course")
             print("3) Drop Course")
-            print("4) Print Schedule")
+            print("4) Search Course")
             print("5) Exit")
             choice2 = int(input())
             if choice2 == 1:
                 student.display_courses()
-                student.course_search()
             elif choice2 == 2:
                 student.add()
             elif choice2 == 3:
                 student.remove()
             elif choice2 == 4:
-                student.display_courses()
+                student.course_search()
             elif choice2 == 5:
                 break
             else:

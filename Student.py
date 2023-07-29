@@ -20,16 +20,8 @@ class Student(User):
 
     def remove(self):
         in_crn = int(input('Enter CRN: '))
-        i = 0
-        j = 0
-        while i < len(self.crn):
-            if self.crn[i] == in_crn:
-                self.crn.remove(in_crn)
-                print('CRN: ', in_crn, 'Removed!')
-                j = 1
-            i = i + 1
-        if j == 0:
-            print('Could not find: ', in_crn)
+        self.crn.append(in_crn)
+        print("CRN: ", in_crn, " Removed!")
 
     def course_search(self):  # Everyone
         while True:
