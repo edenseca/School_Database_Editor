@@ -76,6 +76,7 @@ def get_admin_data():
 
 
 def create_course_table():
+    cur.execute("CREATE TABLE course(CRN, title, dept, time, dotw, semester, year, credits)")
     cur.execute("""
         INSERT INTO course VALUES
             ('40001', 'Physics', 'BSAS', '8-920', 'MWF', 'Fall', '2024', '4' ),
@@ -97,6 +98,7 @@ def create_course_table():
 get_student_data()
 get_teacher_data()
 get_admin_data()
+create_course_table()
 j = 0
 
 # Login system
