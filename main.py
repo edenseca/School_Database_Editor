@@ -98,7 +98,7 @@ def create_course_table():
 get_student_data()
 get_teacher_data()
 get_admin_data()
-create_course_table()
+
 j = 0
 
 # Login system
