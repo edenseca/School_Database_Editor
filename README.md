@@ -3,7 +3,7 @@
 **Authors: Nick Ek Ethan Secakusuma**
 
 ## Overview
-This C++ Database Management Program provides functionality for importing and managing data related to users, students, teachers, and administrators. It leverages SQLite3 for database management and allows users to perform various operations based on their roles.
+This Database Management Program provides functionality for importing and managing data related to users, students, teachers, and administrators. It leverages SQLite3 for database management and allows users to perform various operations based on their roles.
 
 ## Features
 - **Importing Data:**
