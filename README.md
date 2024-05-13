@@ -1,4 +1,4 @@
-# C++ School Database Editor
+#School Database Editor
 
 **Authors: Nick Ek Ethan Secakusuma**
 
@@ -18,7 +18,7 @@ This C++ Database Management Program provides functionality for importing and ma
   - Interact with SQLite3 databases to perform CRUD (Create, Read, Update, Delete) operations on user, student, teacher, and administrator data.
 
 ## Technologies Used
-- **Language:** C++
+- **Language:** Python
 - **Database Management:** SQLite3
 
 ## Usage
@@ -30,10 +30,10 @@ This C++ Database Management Program provides functionality for importing and ma
    ```bash
    cd <project directory>
 
-3. Compile the program:
+3. Create virtual environment:
    ```bash
-    g++ -o main main.cpp -lsqlite3
+    python -m venv venv
 
-5. Run the compiled executable:
+4. Run application:
     ```bash
-    ./main
+    python main.py
