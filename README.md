@@ -37,6 +37,3 @@ This C++ Database Management Program provides functionality for importing and ma
 5. Run the compiled executable:
     ```bash
     ./main
-
-
-
