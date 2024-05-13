@@ -1,4 +1,4 @@
-#School Database Editor
+## School Database Editor
 
 **Authors: Nick Ek Ethan Secakusuma**
 
